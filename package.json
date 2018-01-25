@@ -3,8 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "create-react-class": "^15.6.2",
+    "formsy-material-ui": "^0.6.3",
+    "formsy-react": "^0.19.5",
+    "material-ui": "^0.19.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.0"
   },
   "scripts": {
@@ -12,5 +17,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2"
   }
 }

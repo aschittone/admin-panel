@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import AdminPanel from './components/AdminPanel'
+import AdminLogin from './components/AdminLogin'
+import NotFound from './components/NotFound'
+import authorize from './components/HOC/authorize'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { Route, Switch } from 'react-router-dom'
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <MuiThemeProvider>
+        <div className="App">
+          <Switch>
+            <Route exact path="/" render={(props) => authorize(AdminPanel)} />
+            <Route path="/login" render={(props) => (<AdminLogin />)} />
+            <Route component={NotFound} />
+          </Switch>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
