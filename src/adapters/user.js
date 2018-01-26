@@ -1,5 +1,4 @@
-class Auth {
-	// Auth adapter for user authentication (used in other files)
+class User {
 
 	// fetches to backend to log user in
 	static login(userParams) {
@@ -14,6 +13,11 @@ class Auth {
 		})
 			.then(res => res.json())
 	}
+
+	static logOut() {
+		localStorage.clear()
+	}
 }
 
-export default Auth
+
+export default User

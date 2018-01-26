@@ -1,10 +1,10 @@
 import React from 'react'
 
-function authorize(RenderedComponent, props) {
+function Authorize(RenderedComponent, props) {
 
 	return class extends React.Component {
 
-		// authorizes a user before the component is rendered
+		// Authorizes a Auth before the component is rendered
 		componentWillMount() {
 			if (!localStorage.getItem('token')) {
 				this.props.history.push("/login")
@@ -17,4 +17,4 @@ function authorize(RenderedComponent, props) {
 	}
 }
 
-export default authorize
+export default Authorize

@@ -11,6 +11,7 @@ import FontIcon from 'material-ui/FontIcon';
 import TextField from 'material-ui/TextField';
 import Product from '../adapters/product'
 import Alert from './Alert'
+import User from '../adapters/user'
 
 
 
@@ -33,7 +34,7 @@ const styles = {
 	}
 };
 
-class translate extends React.Component {
+class AdminPanel extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -75,9 +76,11 @@ class translate extends React.Component {
 		this.handleChange = this.handleChange.bind(this)
 		this.handleCategoryChange = this.handleCategoryChange.bind(this)
 		this.handleSubCategoryChange = this.handleSubCategoryChange.bind(this)
+		this.logOut = this.logOut.bind(this)
+
 	}
 
-	handleChange(event, type) {
+	handleChange = (event, type) => {
 		switch (type) {
 			case 'name':
 				this.setState({
@@ -128,11 +131,11 @@ class translate extends React.Component {
 				})
 				break;
 			default:
-				null
+				console.log("default")
 		}
 	}
 
-	handleSubCategoryChange(event, index, value) {
+	handleSubCategoryChange = (event, index, value) => {
 		this.setState({
 			subCategory: {
 				value: value,
@@ -142,7 +145,7 @@ class translate extends React.Component {
 		});
 	}
 
-	handleCategoryChange(event, index, value) {
+	handleCategoryChange = (event, index, value) => {
 		this.setState({
 			category: {
 				value: value,
@@ -188,7 +191,11 @@ class translate extends React.Component {
 		})
 	};
 
-	submitForm() {
+	logOut = () => {
+		User.logOut()
+		this.props.history.push('/login')
+	}
+	submitForm = () => {
 		Product.create(this.state, localStorage.getItem('token'))
 			.then((res) => {
 				if (res.result === "Success") {
@@ -234,7 +241,7 @@ class translate extends React.Component {
 				}
 			})
 	}
-
+	
 	render() {
 		return (
 			<div>
@@ -302,11 +309,8 @@ class translate extends React.Component {
 											onChange={this.handleCategoryChange}
 											style={{ textAlign: 'left' }}
 										>
-											<MenuItem value={1} primaryText="Never" />
-											<MenuItem value={2} primaryText="Every Night" />
-											<MenuItem value={3} primaryText="Weeknights" />
-											<MenuItem value={4} primaryText="Weekends" />
-											<MenuItem value={5} primaryText="Weekly" />
+											<MenuItem value={1} primaryText="Event" />
+											<MenuItem value={2} primaryText="Sale/Discount" />
 										</SelectField>
 									</div>
 									<div style={styles.input}>
@@ -316,11 +320,13 @@ class translate extends React.Component {
 											onChange={this.handleSubCategoryChange}
 											style={{ textAlign: 'left' }}
 										>
-											<MenuItem value={1} primaryText="Never" />
-											<MenuItem value={2} primaryText="Every Night" />
-											<MenuItem value={3} primaryText="Weeknights" />
-											<MenuItem value={4} primaryText="Weekends" />
-											<MenuItem value={5} primaryText="Weekly" />
+											<MenuItem value={1} primaryText="Restaurants" />
+											<MenuItem value={2} primaryText="Fitness" />
+											<MenuItem value={3} primaryText="Eats" />
+											<MenuItem value={4} primaryText="Fashion" />
+											<MenuItem value={5} primaryText="Beauty" />
+											<MenuItem value={5} primaryText="Beauty" />
+											<MenuItem value={5} primaryText="Nightlife" />
 										</SelectField>
 									</div>
 								</Grid.Column>
@@ -345,7 +351,7 @@ class translate extends React.Component {
 										<DatePicker value={this.state.startDate.value} hintText="Start Date (if applicable)" style={{ marginTop: '1.5em' }} onChange={this.handleStartDatePicker} />
 									</div>
 									<div style={styles.input}>
-										<DatePicker value={this.state.endDate.value} hintText="End Date (if applicable)" style={{ marginTop: '1.5em' }} onChange={this.handleEndTimePicker} />
+										<DatePicker value={this.state.endDate.value} hintText="End Date (if applicable)" style={{ marginTop: '1.5em' }} onChange={this.handleEndDatePicker} />
 									</div>
 								</Grid.Column>
 							</Grid.Row>
@@ -353,6 +359,7 @@ class translate extends React.Component {
 					</div>
 					<CardActions style={{ textAlign: 'right' }}>
 						<FlatButton label="Add Product" icon={<FontIcon className="material-icons">done</FontIcon>} onClick={this.submitForm} />
+						<FlatButton label="Logout" icon={<FontIcon className="material-icons">exit_to_app</FontIcon>} onClick={this.logOut} />
 					</CardActions>
 				</Card >
 			</div>
@@ -360,4 +367,4 @@ class translate extends React.Component {
 	}
 }
 
-export default translate
+export default AdminPanel

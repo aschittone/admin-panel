@@ -1,12 +1,7 @@
 import React from 'react';
 import Snackbar from 'material-ui/Snackbar';
 
-export default class SnackbarExampleSimple extends React.Component {
-
-	constructor(props) {
-		super(props);
-	}
-
+export default class Alert extends React.Component {
 
 	render() {
 		return (
@@ -14,7 +9,7 @@ export default class SnackbarExampleSimple extends React.Component {
 				<Snackbar
 					open={true}
 					message={this.props.msg}
-					autoHideDuration={4000}
+					autoHideDuration={5000}
 				/>
 			</div>
 		);

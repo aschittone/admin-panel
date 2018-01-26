@@ -2,10 +2,11 @@ import React from 'react';
 import Formsy from 'formsy-react';
 import RaisedButton from 'material-ui/RaisedButton';
 import { FormsyText } from 'formsy-material-ui/lib';
-import Auth from '../adapters/auth'
+import User from '../adapters/user'
 import { Card, CardActions } from 'material-ui/Card';
 import Avatar from 'material-ui/Avatar';
 import LockIcon from 'material-ui/svg-icons/action/lock-outline';
+import Alert from './Alert';
 
 const styles = {
 	main: {
@@ -36,7 +37,7 @@ const styles = {
 };
 
 
-class Main extends React.Component {
+class AdminLogin extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -49,10 +50,10 @@ class Main extends React.Component {
 
 	}
 
-	errorMessages = {
-		wordsError: "Please only use letters",
-		numericError: "Please provide a number",
-		urlError: "Please provide a valid URL"
+	componentWillMount() {
+		if (localStorage.getItem('token')) {
+			this.props.history.push("/")
+		}
 	}
 
 	enableButton() {
@@ -72,10 +73,10 @@ class Main extends React.Component {
 			errorMsg: ''
 		})
 		const userParams = {
-			name: data.name,
+			name: data.username,
 			password: data.password
 		}
-		Auth.login(userParams)
+		User.login(userParams)
 			.then((res) => {
 				if (res.msg === "Success") {
 					localStorage.setItem("token", res.jwt)
@@ -89,19 +90,15 @@ class Main extends React.Component {
 			})
 	}
 
-	notifyFormError(data) {
-		console.error('Form error:', data);
-	}
-
 	render() {
 
 		return (
 			<div>
-				<div style={{ ...styles.main }} className="div-with-bg">
+				{this.state.errorMsg === 'Username or Password Incorrect' ? <Alert msg={this.state.errorMsg} /> : null}
+				<div style={{ ...styles.main }}>
 					<Card style={styles.card}>
 						<div style={styles.avatar}>
 							<Avatar backgroundColor='#000' icon={<LockIcon />} size={60} />
-							{this.state.errorMsg === 'Username or Password incorrect' ? <h4>{this.state.errorMsg}</h4> : null}
 						</div>
 						<Formsy.Form
 							onValid={this.enableButton}
@@ -112,10 +109,10 @@ class Main extends React.Component {
 								<p style={styles.hint}>Admin Panel Login</p>
 								<div style={styles.input} >
 									<FormsyText
-										name="name"
+										name="username"
 										required
-										hintText="Name"
-										floatingLabelText="Name"
+										hintText="Username"
+										floatingLabelText="Username"
 										floatingLabelStyle={{ color: '#000' }}
 										floatingLabelFocusStyle={{ color: '#000' }}
 										underlineFocusStyle={{ borderColor: '#000' }}
@@ -153,4 +150,4 @@ class Main extends React.Component {
 	}
 }
 
-export default Main;
+export default AdminLogin;
