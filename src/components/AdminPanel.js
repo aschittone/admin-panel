@@ -38,36 +38,28 @@ class translate extends React.Component {
 		super(props)
 		this.state = {
 			name: {
-				value: '',
-				errorText: ''
+				value: ''
 			},
 			description: {
-				value: '',
-				errorText: ''
+				value: ''
 			},
 			priceDetails: {
-				value: '',
-				errorText: ''
+				value: ''
 			},
 			startTime: {
-				value: '',
-				errorText: ''
+				value: ''
 			},
 			endTime: {
-				value: '',
-				errorText: ''
+				value: ''
 			},
 			startDate: {
-				value: '',
-				errorText: ''
+				value: ''
 			},
 			endDate: {
-				value: '',
-				errorText: ''
+				value: ''
 			},
 			location: {
-				value: '',
-				errorText: ''
+				value: ''
 			},
 			category: {
 				value: '',
@@ -90,8 +82,7 @@ class translate extends React.Component {
 			case 'name':
 				this.setState({
 					name: {
-						value: event.target.value,
-						errorText: ''
+						value: event.target.value
 					},
 					msg: ''
 				})
@@ -99,8 +90,7 @@ class translate extends React.Component {
 			case 'description':
 				this.setState({
 					description: {
-						value: event.target.value,
-						errorText: ''
+						value: event.target.value
 					},
 					msg: ''
 				})
@@ -108,8 +98,7 @@ class translate extends React.Component {
 			case 'priceDetails':
 				this.setState({
 					priceDetails: {
-						value: event.target.value,
-						errorText: ''
+						value: event.target.value
 					},
 					msg: ''
 				})
@@ -117,8 +106,7 @@ class translate extends React.Component {
 			case 'location':
 				this.setState({
 					location: {
-						value: event.target.value,
-						errorText: ''
+						value: event.target.value
 					},
 					msg: ''
 				})
@@ -126,8 +114,7 @@ class translate extends React.Component {
 			case 'startDate':
 				this.setState({
 					startDate: {
-						value: event.target.value,
-						errorText: ''
+						value: event.target.value
 					},
 					msg: ''
 				})
@@ -135,8 +122,7 @@ class translate extends React.Component {
 			case 'endDate':
 				this.setState({
 					endDate: {
-						value: event.target.value,
-						errorText: ''
+						value: event.target.value
 					},
 					msg: ''
 				})
@@ -169,8 +155,7 @@ class translate extends React.Component {
 	handleStartTimePicker = (event, date) => {
 		this.setState({
 			startTime: {
-				value: date,
-				errorText: ''
+				value: date
 			},
 			msg: ''
 		})
@@ -179,8 +164,7 @@ class translate extends React.Component {
 	handleEndTimePicker = (event, date) => {
 		this.setState({
 			endTime: {
-				value: date,
-				errorText: ''
+				value: date
 			},
 			msg: ''
 		})
@@ -189,8 +173,7 @@ class translate extends React.Component {
 	handleStartDatePicker = (event, date) => {
 		this.setState({
 			startDate: {
-				value: date,
-				errorText: ''
+				value: date
 			},
 			msg: ''
 		})
@@ -199,8 +182,7 @@ class translate extends React.Component {
 	handleEndDatePicker = (event, date) => {
 		this.setState({
 			endDate: {
-				value: date,
-				errorText: ''
+				value: date
 			},
 			msg: ''
 		})
@@ -212,36 +194,28 @@ class translate extends React.Component {
 				if (res.result === "Success") {
 					this.setState({
 						name: {
-							value: '',
-							errorText: ''
+							value: ''
 						},
 						description: {
-							value: '',
-							errorText: ''
+							value: ''
 						},
 						priceDetails: {
-							value: '',
-							errorText: ''
+							value: ''
 						},
 						startTime: {
-							value: '',
-							errorText: ''
+							value: ''
 						},
 						endTime: {
-							value: '',
-							errorText: ''
+							value: ''
 						},
 						startDate: {
-							value: '',
-							errorText: ''
+							value: ''
 						},
 						endDate: {
-							value: '',
-							errorText: ''
+							value: ''
 						},
 						location: {
-							value: '',
-							errorText: ''
+							value: ''
 						},
 						category: {
 							value: '',
@@ -278,7 +252,7 @@ class translate extends React.Component {
 							<Grid.Row >
 								<Grid.Column>
 									<div style={styles.input}>
-										<TextField hintText={'Name of Product'}
+										<TextField hintText={'Name of Product (Required)'}
 											value={this.state.name.value}
 											onChange={(event) => this.handleChange(event, 'name')}
 											errorText={this.state.name.errorText}
@@ -288,7 +262,7 @@ class translate extends React.Component {
 											style={{ marginTop: '1.5em' }} />
 									</div>
 									<div style={styles.input}>
-										<TextField hintText={'Price Details'}
+										<TextField hintText={'Price Details (Required)'}
 											value={this.state.priceDetails.value}
 											onChange={(event) => this.handleChange(event, 'priceDetails')}
 											errorText={this.state.priceDetails.errorText}
@@ -300,7 +274,7 @@ class translate extends React.Component {
 								</Grid.Column>
 								<Grid.Column>
 									<div style={styles.input}>
-										<TextField hintText={'Product Description'}
+										<TextField hintText={'Product Description (Required)'}
 											value={this.state.description.value}
 											onChange={(event) => this.handleChange(event, 'description')}
 											errorText={this.state.description.errorText}
@@ -323,7 +297,7 @@ class translate extends React.Component {
 								<Grid.Column>
 									<div style={styles.input}>
 										<SelectField
-											floatingLabelText="Category"
+											floatingLabelText="Category (Required)"
 											value={this.state.category.value}
 											onChange={this.handleCategoryChange}
 											style={{ textAlign: 'left' }}
@@ -368,10 +342,10 @@ class translate extends React.Component {
 								</Grid.Column>
 								<Grid.Column>
 									<div style={styles.input}>
-										<DatePicker hintText="Start Date (if applicable)" style={{ marginTop: '1.5em' }} onChange={this.handleStartDatePicker} />
+										<DatePicker value={this.state.startDate.value} hintText="Start Date (if applicable)" style={{ marginTop: '1.5em' }} onChange={this.handleStartDatePicker} />
 									</div>
 									<div style={styles.input}>
-										<DatePicker hintText="End Date (if applicable)" style={{ marginTop: '1.5em' }} onChange={this.handleEndTimePicker} />
+										<DatePicker value={this.state.endDate.value} hintText="End Date (if applicable)" style={{ marginTop: '1.5em' }} onChange={this.handleEndTimePicker} />
 									</div>
 								</Grid.Column>
 							</Grid.Row>
