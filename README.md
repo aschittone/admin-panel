@@ -2,11 +2,11 @@
 
 This application is an Admin panel that can be used to sign in as an admin and communicate with the Product Syndicator API at the link below. An admin has the ability to create a new product/event to save to the database in the back end. 
 
-Demo:
+Demo: https://adminpanel-syndicator.herokuapp.com
 
-credentials to log in:
-username: admin
-password: admin
+* credentials to log in:
+ * username: admin
+ * password: admin
 
 API Repo: https://github.com/aschittone/product-syndicator
 
