@@ -5,8 +5,8 @@ This application is an Admin panel that can be used to sign in as an admin and c
 Demo: https://adminpanel-syndicator.herokuapp.com
 
 * credentials to log in:
- * username: admin
- * password: admin
+  * username: admin
+  * password: admin
 
 API Repo: https://github.com/aschittone/product-syndicator
 
