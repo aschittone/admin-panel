@@ -17,5 +17,6 @@ API Repo: https://github.com/aschittone/product-syndicator
 
 * Technologies used:
   * React.js
+  * React Router
   * Material-UI
   * Semantic-UI
