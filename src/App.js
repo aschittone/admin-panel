@@ -13,8 +13,8 @@ class App extends Component {
       <MuiThemeProvider>
         <div className="App">
           <Switch>
-            <Route exact path="/" render={(props) => authorize(AdminPanel)} />
-            <Route path="/login" render={(props) => (<AdminLogin />)} />
+            <Route exact path="/" component={authorize(AdminPanel)} />
+            <Route path="/login" render={(props) => (<AdminLogin {...props} />)} />
             <Route component={NotFound} />
           </Switch>
         </div>
