@@ -2,7 +2,7 @@ class Product {
 
 	static create(state, token) {
 		const productJSON = JSON.stringify(state)
-		return fetch('https://product-syndicator-api.herokuapp.com/api/v1/products', {
+		return fetch('http://localhost:8080/api/v1/products', {
 			method: 'post',
 			body: productJSON,
 			headers: {

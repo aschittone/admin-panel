@@ -47,7 +47,6 @@ class AdminLogin extends React.Component {
 		this.enableButton = this.enableButton.bind(this)
 		this.disableButton = this.disableButton.bind(this)
 		this.submitForm = this.submitForm.bind(this)
-
 	}
 
 	componentWillMount() {
@@ -59,19 +58,18 @@ class AdminLogin extends React.Component {
 	enableButton() {
 		this.setState({
 			canSubmit: true,
+			errorMsg: ''
 		});
 	}
 
 	disableButton() {
 		this.setState({
 			canSubmit: false,
+			errorMsg: ''
 		});
 	}
 
 	submitForm(data, event) {
-		this.setState({
-			errorMsg: ''
-		})
 		const userParams = {
 			name: data.username,
 			password: data.password
@@ -103,8 +101,7 @@ class AdminLogin extends React.Component {
 						<Formsy.Form
 							onValid={this.enableButton}
 							onInvalid={this.disableButton}
-							onValidSubmit={this.submitForm}
-							onInvalidSubmit={this.notifyFormError}>
+							onValidSubmit={this.submitForm}>
 							<div style={styles.form}>
 								<p style={styles.hint}>Admin Panel Login</p>
 								<div style={styles.input} >
